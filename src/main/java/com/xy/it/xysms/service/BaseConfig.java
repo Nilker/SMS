@@ -61,7 +61,7 @@ public abstract class BaseConfig {
      * 表示已发送短信验证码次数大于等于imageCodeDisplayCount时，需输入图片验证码
      * 默认值：2次
      */
-    private int imageCodeDisplayCount = 2;
+    private int imageCodeDisplayCount = 20;
 
     /**
      * 仓储配置

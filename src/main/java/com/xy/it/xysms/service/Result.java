@@ -53,7 +53,9 @@ public class Result<D> {
     static Result success(Object data) {
         return Result.builder()
                 .success(true)
-                .data(data)
+                //.data(data)
+                .errorCode("")
+                .errorMsg("")
                 .build();
     }
 

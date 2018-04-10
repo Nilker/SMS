@@ -53,8 +53,6 @@ public class XySmsService extends BaseSmsService<Xyconfig> {
         m1.put("noteContent",text);
 
         //发送请求
-       //String str= HttpUtil.doPost(sendPostUrl,m1);
-
-
+       String str= HttpUtil.doPost(sendPostUrl,m1);
     }
 }
