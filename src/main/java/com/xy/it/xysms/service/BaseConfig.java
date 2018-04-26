@@ -47,7 +47,7 @@ public abstract class BaseConfig {
      * 单位：毫秒
      * 默认值：1分钟
      */
-    private long smsCodeResendingInterval = 60 * 1000;
+    private long smsCodeResendingInterval = 10 * 1000; //10miao
 
     /**
      * 图片验证码过期时间

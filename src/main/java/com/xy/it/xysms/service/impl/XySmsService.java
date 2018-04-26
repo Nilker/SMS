@@ -6,6 +6,8 @@ import com.xy.it.xysms.util.HttpUtil;
 import com.xy.it.xysms.util.XySmsUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -34,9 +36,9 @@ public class XySmsService extends BaseSmsService<Xyconfig> {
     @Override
     public void send(String phoneNo, String text) {
         //appId
-        Integer appid = 1;
+        Integer appid = CONFIG.getAppid();
         //appKey
-        String appKey = "DC0D49B9-1C82-4495-8D3F-1FFB30F6A15D";
+        String appKey = CONFIG.getAppKey();
         //ticket
         String ticket = String.valueOf(new Date().getTime());
 

@@ -26,7 +26,7 @@ public abstract class BaseSmsService<C extends BaseConfig> implements ISmsServic
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseSmsService.class);
 
-    private final C CONFIG;
+    public final C CONFIG;
 
     private final ISmsRepository SMS_REPOSITORY;
 

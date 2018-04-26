@@ -9,6 +9,7 @@ import com.xy.it.xysms.util.CaptchaUtil;
 import com.xy.it.xysms.util.VerificationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,14 +27,29 @@ public class XySmsController {
     @Value("${sms.temContent}")
     private String temp;
 
-    public XySmsController(IRepositoryConfig repositoryConfig) {
-        Xyconfig config = new Xyconfig();
-        config.setRepositoryConfig(repositoryConfig);
-        SMS_SERVICE = VerificationUtil.createSmsService(config);
-    }
+
+    //appId
+    @Value("${appid}")
+    private Integer appid;
+    //appKey
+    @Value("${appKey}")
+    private String appKey ;
+
+    @Autowired
+    private IRepositoryConfig repositoryConfig;
+
+
 
     @RequestMapping("/send")
     public String xySmsSend(String phoneNo) {
+
+        Xyconfig config = new Xyconfig();
+        config.setAppid(appid);
+        config.setAppKey(appKey);
+        config.setRepositoryConfig(repositoryConfig);
+        SMS_SERVICE = VerificationUtil.createSmsService(config);
+
+
         //生成的短信验证码
         String code = CaptchaUtil.create().getWord();
         //短信内容
@@ -48,6 +64,13 @@ public class XySmsController {
 
     @RequestMapping("/Verify")
     public String xySmsVerifying(String phoneNo, String smsCode, String imageCode) {
+        Xyconfig config = new Xyconfig();
+        config.setAppid(appid);
+        config.setAppKey(appKey);
+        config.setRepositoryConfig(repositoryConfig);
+        SMS_SERVICE = VerificationUtil.createSmsService(config);
+
+
         //业务标志
         String flag = "";
 
